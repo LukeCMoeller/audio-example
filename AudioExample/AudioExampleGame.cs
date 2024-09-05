@@ -1,7 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using Microsoft.Xna.Framework.Media;
 namespace AudioExample
 {
     /// <summary>
@@ -19,6 +20,8 @@ namespace AudioExample
 
         private Texture2D ball;
 
+        private SoundEffect sf;
+        private Song music;
         /// <summary>
         /// A game demonstrating collision detection
         /// </summary>
@@ -64,6 +67,10 @@ namespace AudioExample
             slimeGhost.LoadContent(Content);
             spriteFont = Content.Load<SpriteFont>("arial");
             ball = Content.Load<Texture2D>("ball");
+            sf = Content.Load<SoundEffect>("Pickup_Coin15");
+            music = Content.Load<Song>("DeeYan-Key-TheGame");
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(music);
         }
 
         /// <summary>
@@ -87,6 +94,7 @@ namespace AudioExample
                     slimeGhost.Color = Color.Red;
                     coin.Collected = true;
                     coinsLeft--;
+                    sf.Play();
                 }
             }
 
