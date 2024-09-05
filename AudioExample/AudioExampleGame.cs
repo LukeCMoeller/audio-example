@@ -52,7 +52,7 @@ namespace AudioExample
             coinsLeft = coins.Length;
             slimeGhost = new SlimeGhostSprite();
 
-            base.Initialize();
+            base.Initialize(); 
         }
 
         /// <summary>
